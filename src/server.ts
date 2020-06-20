@@ -1,5 +1,7 @@
-import { application } from './application'
+import app from './app'
 
-application.listen(application.get('port'), () => {
-  console.log('App is running at http://localhost:%d in %s mode', application.get('port'), application.get('env'))
+// Área de conexão com servidor.
+const porta = 3333
+app.listen(porta, () => {
+  console.log(`Conexão estabelecida com servidor na porta: ${porta}`)
 })
