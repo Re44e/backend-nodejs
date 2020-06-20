@@ -6,7 +6,7 @@ class OpSaqueCtrl {
     // Função de acesso ao serviço de busca de operações de saques.
     public async getAll(req: Request, res: Response): Promise<Response> {
         const saques = await OpSaqueServ.getAll()
-        return res.json(saques)
+        return res.status(200).json(saques)
     }
 
     // Função de acesso ao serviço de cadastro de operações de saques.

@@ -40,7 +40,7 @@ class OpDepositoServ {
                 } else{ return undefined }
 
             } else {
-                return false
+                return 2
             }
 
         } catch (error) {
