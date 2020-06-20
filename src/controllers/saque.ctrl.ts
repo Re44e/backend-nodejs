@@ -14,14 +14,15 @@ class SaqueCtrl {
         const saque = await ServSaques.create(req.body)
 
         if(saque){
-            res.status(200).send('Configurações de saque cadastradas com sucesso.')
-            return
+            return res.status(200).send({
+                message: 'Configurações de saque cadastradas com sucesso.'
+            })
         }else{
-            return res.status(500).send('Erro ao cadastrar configurações de saque.');
+            return res.status(500).send({
+                message: 'Erro ao cadastrar configurações de saque.'
+            });
         }
-        
     }
-
 }
 
 export default new SaqueCtrl();

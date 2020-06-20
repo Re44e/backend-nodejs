@@ -14,14 +14,17 @@ class UsuarioCtrl {
         const usuario = await ServUsuarios.create(req.body)
 
         if(usuario == true){
-            res.status(200).send('Usuário cadastrado com sucesso.')
+            return res.status(200).send({
+                message: 'Usuário cadastrado com sucesso.'
+            })
         }else if(usuario == false){
-            return res.status(404).send({
+            return res.status(401).send({
                 message: 'O código da conta informado já existe.'
             });
-            
         }else{
-            return res.status(500).send('Erro ao cadastrar usuário.');
+            return res.status(500).send({
+                message: 'Erro ao cadastrar usuário.'
+            });
         }
     }
 }
