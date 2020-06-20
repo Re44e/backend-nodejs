@@ -1,37 +1,28 @@
-# Backend Node.js <img src="https://www.moovin.com.br/assets/images/svg/logo2.svg" width="50">
+**Backend Node.js**
 
-### Desafio
+**Overview**
 
-Desenvolver uma solução em formato de API com a utilização de node.js e Typescript.
+Technical Evaluation of the company Moovin. Applied technologies: Node.js and TypeScript
 
-### Como realizar
+**Solution description**
 
-Faça o fork do repositório, realize os seus commits e ao final envie o link do seu repositório para o e-mail rh@moovin.com.br. Este repositório já possui uma base para iniciar o desenvolvimento, utilize-a como achar necessário. 
+The solution implements an abstraction algorithm for electronic banking services.
 
-Para iniciar você deve instalar as dependências:
+In addition to the technologies needed for evaluation,
+I used sucrase to optimize the process of transpilation in the development environment. 
+The nodemon was also configured to automate fixes on the server.
+
+**Instructions for running the project**
+
+Install the dependencies:
 ```zsh
-  foo@bar:~$ npm i
+  foo@bar:~$ yarn
 ```
-Em seguida você poderá executar exemplos de utilização do sistema criado através do comando:
+Run project:
 ```zsh
-  foo@bar:~$ npm run dev
+  foo@bar:~$ yarn run dev
 ```
 
-### Instruções
+API documentation (Postman): <a href="https://www.getpostman.com/collections/7124532c0c1936aa9ec6">Access here...</a>
 
-Em um pequeno país do planeta Cyber, a moeda vigente é o biteris cuja sigla é B$.
-
-Você precisa desenvolver um algoritmo para um caixa eletrônico, seguindo os requisitos descritos abaixo:
-
-- O banco possui dois tipos de conta: Conta Corrente e Conta Poupança;
-- Limite de Saque: B$ 600,00;
-- Cada operação de Saque possui uma taxa de operação que deve ser descontado do saldo: B$ 0,30;
-- O recurso de Depósito deve receber um código de conta e o valor a ser depositado;
-- O recurso de Saque deve receber um código de conta e o valor a ser retirado além de validar se a conta possui saldo e se o valor não excede o limite;
-
-> **ATENÇÃO**: Não é necessário realizar interação com banco de dados (opcional).
-
-### Dúvidas
-
-Em caso de dúvida entre em contato pelo skype **matheusmoovin**
 
