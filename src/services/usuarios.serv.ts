@@ -3,12 +3,13 @@ import Usuario from '../schemas/usuarios.sch'
 class UsuarioServ {
 
     // Função para serviço de busca de usuários.
-    public async getAll() {
-        const usuarios = await Usuario.find()
+    public async getUser(param) {
+        const codigoConta = param.codigoConta
+        const usuarios = await Usuario.findOne({ codigoConta: codigoConta })
         return usuarios
     }
 
-    // Função para serviço de cadastro de usuários.
+    // Função para serviço de abertura de contas.
     public async create(param) {
 
         try {
@@ -33,6 +34,19 @@ class UsuarioServ {
             return `Erro: ${error}`
         }
 
+    }
+    
+    // Função para serviço de fechamento de contas.
+    public async delete(param){
+        let codigoConta = parseInt(param.codigoConta)
+        try{
+
+            const result = await Usuario.deleteOne( { codigoConta: codigoConta })
+            return result.deletedCount
+
+        }catch(error){
+            return `Erro: ${error}`
+        }
     }
 
 }
