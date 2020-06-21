@@ -6,7 +6,13 @@ class SaqueCtrl {
     // Função de acesso ao serviço de busca de configurações de saque.
     public async getAll (req: Request, res: Response): Promise<Response> {
         const saques = await ServSaques.getAll()
-        return res.status(200).json(saques)
+        if(saques.length > 0){
+            return res.status(200).json(saques)
+        }else {
+            return res.status(500).send({
+                message: 'Erro ao buscar configurações de saque.'
+            });
+        }
     }
 
     // Função de acesso ao serviço de cadastro de configurações de saque.
