@@ -10,7 +10,7 @@ class SaqueCtrl {
             return res.status(200).json(saques)
         }else {
             return res.status(500).send({
-                message: 'Erro ao buscar configurações de saque.'
+                message: 'Nenhuma configuração de saque foi encontrada.'
             });
         }
     }

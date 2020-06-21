@@ -6,7 +6,13 @@ class OpDepositoCtrl {
     // Função de acesso ao serviço de busca de operações de depósito.
     public async getAll (req: Request, res: Response): Promise<Response> {
         const depositos = await OpDepositoServ.getAll()
-        return res.status(200).json(depositos)
+        if(depositos.length > 0){
+            return res.status(200).json(depositos)
+        }else{
+            return res.status(500).send({
+                message: 'Nenhuma operação de depósito foi encontrada.'
+            });
+        } 
     }
 
     // Função de acesso ao serviço de cadastro de operações de depósitos.
