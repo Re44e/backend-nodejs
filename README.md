@@ -1,28 +1,28 @@
-**Backend Node.js**
+**Technical evaluation promoted by the company: Moovin**
 
 **Overview**
 
-Technical Evaluation of the company Moovin. Applied technologies: Node.js and TypeScript
+The assessment consists of developing a banking services API using Node.js and TypeScript. 
 
 **Solution description**
 
-The solution implements an abstraction algorithm for electronic banking services.
+The solution implements an abstraction algorithm for elementary banking services such as withdrawals and deposits.
 
-In addition to the technologies needed for evaluation,
-I used sucrase to optimize the process of transpilation in the development environment. 
-The nodemon was also configured to automate fixes on the server.
+**Note:** <br>
+Thinking about the performance of the development environment, I integrated Sucrase to optimize the <br>
+TypeScript transpilation process. Also, I configured Nodemon to automate fixes on the server.
 
 **Instructions for running the project**
 
 Install the dependencies:
 ```zsh
-  foo@bar:~$ yarn
+  $ yarn
 ```
 Run project:
 ```zsh
-  foo@bar:~$ yarn run dev
+  $ yarn run dev
 ```
 
-API documentation (Postman): <a href="https://www.getpostman.com/collections/7124532c0c1936aa9ec6">Access here...</a>
+API documentation (Postman): <a href="https://www.getpostman.com/collections/7124532c0c1936aa9ec6">Access Here</a>
 
 
