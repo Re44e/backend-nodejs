@@ -9,6 +9,7 @@ const routes = Router()
 //Configuração de rotas
 routes.get('/usuarios', UserController.getAll)
 routes.post('/usuarios', UserController.create)
+routes.delete('/usuarios', UserController.delete)
 routes.get('/opdeposito', OpDepositoController.getAll)
 routes.post('/opdeposito', OpDepositoController.create)
 routes.get('/saque', SaqueController.getAll)
