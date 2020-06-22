@@ -25,6 +25,6 @@ Run project:
   root@ yarn run dev
 ```
 
-API documentation: <a href="https://documenter.getpostman.com/preview/10341529-ab11d4e2-1aff-4701-a516-054510efb944?versionTag=latest&apiName=CURRENT&version=latest&documentationLayout=classic-double-column&top-bar=ffffff&right-sidebar=303030&highlight=ef5b25">Access Here</a>
+API documentation: <a href="https://documenter.getpostman.com/view/10341529/SzzoZFXr?version=latest">Access Here</a>
 
 
