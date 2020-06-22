@@ -6,7 +6,7 @@ import OpSaqueController from './controllers/opera.saque.ctrl'
 
 const routes = Router()
 
-//Configuração de rotas
+// Área de configuração de rotas
 routes.get('/usuarios', UserController.getAll)
 routes.post('/usuarios', UserController.create)
 routes.delete('/usuarios', UserController.delete)

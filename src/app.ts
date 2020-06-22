@@ -3,7 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import routes from './routes'
 
-// Área de configuração com servidor.
+// Área de configuração do servidor.
 class App {
 
     public express: express.Application
