@@ -9,6 +9,8 @@ The assessment consists of developing a banking services API using Node.js and T
 Implements a REST API using tools like Express.js, Mongoose, MongoDB, and Postman.<br>
 The Postman was instrumental in the tests. In addition, it provided a quick and versatile construction of the API documentation.
 
+A database migration tool has also been integrated for testing purposes: <a href="https://www.npmjs.com/package/migrate-mongo">Reference</a>
+
 **Thinking about the performance of the development environment**
 
 I integrated Sucrase to optimize the TypeScript compilation process. Also, I configured Nodemon to automate fixes on the server. <br>
