@@ -26,6 +26,7 @@ class UsuarioServ {
             })
 
             const usuario = await registro.save({ validateBeforeSave: true })
+
             if (usuario === registro) {
                 return true
             }

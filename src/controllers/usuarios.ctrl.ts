@@ -4,49 +4,66 @@ import ServUsuarios from '../services/usuarios.serv'
 class UsuarioCtrl {
 
     // Função de acesso ao serviço de busca de usuários.
-    public async getAll(req: Request, res: Response): Promise<Response> {
-        const usuarios = await ServUsuarios.getUser(req.body)
-        if(usuarios){
-            return res.status(200).json(usuarios)
-        }else{
-            return res.status(401).send({
-                message: 'Usuário não encontrado.'
-            });
-        }
+    public async getAll(req: Request, res: Response): Promise<void> {
+        await ServUsuarios.getUser(req.body)
+        .then((resposta)=>{
+            if (resposta) {
+                return res.status(200).json(resposta)
+            } else {
+                return res.status(401).send({
+                    message: 'Usuário não encontrado.'
+                });
+            }
+        }).catch((error) => {
+            return `Erro: ${error}`
+        })
+ 
     }
 
     // Função de acesso ao serviço de abertura de contas.
-    public async create(req: Request, res: Response): Promise<Response> {
-        const usuario = await ServUsuarios.create(req.body)
-
-        if (usuario == true) {
-            return res.status(200).send({
-                message: 'Abertura de conta realizada com sucesso.'
+    public async create(req: Request, res: Response): Promise<void> {
+        await ServUsuarios.create(req.body)
+            .then((resposta) => {
+                switch (resposta) {
+                    case true:
+                        return res.status(200).send({
+                            message: 'Abertura de conta realizada com sucesso.'
+                        });
+                    case false:
+                        return res.status(401).send({
+                            message: 'O código da conta informado já existe.'
+                        });
+                    default:
+                        return res.status(500).send({
+                            message: 'Erro ao cadastrar usuário.'
+                        });
+                }
+            }).catch((error) => {
+                return `Erro: ${error}`
             })
-        } else if (usuario == false) {
-            return res.status(401).send({
-                message: 'O código da conta informado já existe.'
-            });
-        } else {
-            return res.status(500).send({
-                message: 'Erro ao cadastrar usuário.'
-            });
-        }
+
     }
 
     //Função de acesso ao serviço de encerramento de contas.
-    public async delete(req: Request, res: Response): Promise<Response> {
-        const result = await ServUsuarios.delete(req.body)
-        if (result > 0) {
-            return res.status(200).send({
-                message: 'Conta encerrada com sucesso.'
+    public async delete(req: Request, res: Response): Promise<void> {
+        await ServUsuarios.delete(req.body)
+            .then((resposta) => {
+                if (resposta > 0) {
+                    return res.status(200).send({
+                        message: 'Conta encerrada com sucesso.'
+                    })
+                }
+                else {
+                    return res.status(401).send({
+                        message: 'Não foi possível encerrar a conta.'
+                    });
+                }
+            }).catch((error) => {
+                return `Erro: ${error}`
             })
-        } else {
-            return res.status(500).send({
-                message: 'Erro ao encerrar conta.'
-            });
-        }
     }
 }
+
+
 
 export default new UsuarioCtrl();
