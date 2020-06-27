@@ -2,53 +2,58 @@ import { Request, Response, json } from 'express'
 import OpSaqueServ from '../services/opera.saque.serv'
 
 class OpSaqueCtrl {
-    
+
     // Função de acesso ao serviço de busca de operações de saques.
-    public async getAll(req: Request, res: Response): Promise<Response> {
-        const saques = await OpSaqueServ.getAll()
-        if(saques.length > 0){
-            return res.status(200).json(saques)
-        }else{
-            return res.status(500).send({
-                message: 'Nenhuma operação de saque foi encontrada.'
-            });
-        } 
+    public async getAll(req: Request, res: Response): Promise<void> {
+        await OpSaqueServ.getAll()
+        .then((resposta)=>{
+            if (resposta.length > 0) {
+                return res.status(200).json(resposta)
+            } else {
+                return res.status(500).send({
+                    message: 'Nenhuma operação de saque foi encontrada.'
+                });
+            }
+        }).catch((error) => {
+            return `Erro: ${error}`
+        })
     }
 
     // Função de acesso ao serviço de cadastro de operações de saques.
-    public async create(req: Request, res: Response): Promise<Response> {
+    public async create(req: Request, res: Response): Promise<void> {
 
-        const comprovanteSaque = await OpSaqueServ.create(req.body)
+        await OpSaqueServ.create(req.body)
+            .then((resposta) => {
+                switch (resposta) {
+                    case 2:
+                        return res.status(401).send({
+                            message: 'O valor do saque é maior que o permitido.'
+                        });
 
-        if(comprovanteSaque == 2){
-            return  res.status(401).send({
-                message: 'O valor do saque é maior que o permitido.'
-            });
-        }
+                    case 3:
+                        return res.status(401).send({
+                            message: 'Você não possui saldo para valor solicitado.'
+                        });
 
-        if(comprovanteSaque == 3){
-            return  res.status(401).send({
-                message: 'Você não possui saldo para valor solicitado.'
-            });
-        }
+                    case true:
+                        return res.status(200).send({
+                            message: 'Saque realizado com sucesso.'
+                        });
 
-        if(comprovanteSaque == true){
-            return res.status(200).send({
-                message: 'Saque realizado com sucesso.'
-            });
-            
+                    case false:
+                        return res.status(500).send({
+                            message: 'Falha ao emitir comprovante de saque.'
+                        });
+                    default:
+                        return res.status(500).send({
+                            message: 'Falha ao realizar saque.'
+                        });
+                }
 
-        }else if(comprovanteSaque == false){
-            return res.status(500).send({
-                message: 'Falha ao emitir comprovante de saque.'
-            });
-        }
+            }).catch((error) => {
+                return `Erro: ${error}`
+            })
 
-        if(comprovanteSaque == undefined) {
-            return res.status(500).send({
-                message: 'Falha ao realizar saque.'
-            });
-        }
     }
 
 }
