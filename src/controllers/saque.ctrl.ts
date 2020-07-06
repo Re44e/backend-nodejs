@@ -4,7 +4,7 @@ import ServSaques from '../services/saque.serv'
 class SaqueCtrl {
     
     // Função de acesso ao serviço de busca de configurações de saque.
-    public async getAll (req: Request, res: Response): Promise<void> {
+    public async getAll (req: Request, res: Response): Promise<any> {
         await ServSaques.getAll()
         .then((reposta)=>{
             if(reposta.length > 0){
@@ -20,7 +20,7 @@ class SaqueCtrl {
     }
 
     // Função de acesso ao serviço de cadastro de configurações de saque.
-    public async create (req: Request, res: Response): Promise<void> {
+    public async create (req: Request, res: Response): Promise<any> {
         await ServSaques.create(req.body)
         .then((resposta)=>{
             if(resposta){

@@ -4,7 +4,7 @@ import ServUsuarios from '../services/usuarios.serv'
 class UsuarioCtrl {
 
     // Função de acesso ao serviço de busca de usuários.
-    public async getAll(req: Request, res: Response): Promise<void> {
+    public async getAll(req: Request, res: Response): Promise<any> {
         await ServUsuarios.getUser(req.body)
         .then((resposta)=>{
             if (resposta) {
@@ -21,7 +21,7 @@ class UsuarioCtrl {
     }
 
     // Função de acesso ao serviço de abertura de contas.
-    public async create(req: Request, res: Response): Promise<void> {
+    public async create(req: Request, res: Response): Promise<any> {
         await ServUsuarios.create(req.body)
             .then((resposta) => {
                 switch (resposta) {
@@ -45,7 +45,7 @@ class UsuarioCtrl {
     }
 
     //Função de acesso ao serviço de encerramento de contas.
-    public async delete(req: Request, res: Response): Promise<void> {
+    public async delete(req: Request, res: Response): Promise<any> {
         await ServUsuarios.delete(req.body)
             .then((resposta) => {
                 if (resposta > 0) {

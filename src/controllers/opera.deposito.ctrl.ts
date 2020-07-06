@@ -4,7 +4,7 @@ import OpDepositoServ from '../services/opera.deposito.serv'
 class OpDepositoCtrl {
 
     // Função de acesso ao serviço de busca de operações de depósito.
-    public async getAll(req: Request, res: Response): Promise<void> {
+    public async getAll(req: Request, res: Response): Promise<any> {
         await OpDepositoServ.getAll()
         .then((resposta) =>{
             if (resposta.length > 0) {
@@ -22,7 +22,7 @@ class OpDepositoCtrl {
     }
 
     // Função de acesso ao serviço de cadastro de operações de depósitos.
-    public async create(req: Request, res: Response): Promise<void> {
+    public async create(req: Request, res: Response): Promise<any> {
         await OpDepositoServ.create(req.body)
             .then((resposta) => {
                 switch (resposta) {

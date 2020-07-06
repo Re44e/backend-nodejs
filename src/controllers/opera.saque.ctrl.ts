@@ -4,7 +4,7 @@ import OpSaqueServ from '../services/opera.saque.serv'
 class OpSaqueCtrl {
 
     // Função de acesso ao serviço de busca de operações de saques.
-    public async getAll(req: Request, res: Response): Promise<void> {
+    public async getAll(req: Request, res: Response): Promise<any> {
         await OpSaqueServ.getAll()
         .then((resposta)=>{
             if (resposta.length > 0) {
@@ -20,7 +20,7 @@ class OpSaqueCtrl {
     }
 
     // Função de acesso ao serviço de cadastro de operações de saques.
-    public async create(req: Request, res: Response): Promise<void> {
+    public async create(req: Request, res: Response): Promise<any> {
 
         await OpSaqueServ.create(req.body)
             .then((resposta) => {
